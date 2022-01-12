@@ -24,10 +24,9 @@ void DrawHandler::init(
 }
 
 void DrawHandler::draw() {
-  std::cout << _window << " ";
-  SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+  SDL_SetRenderDrawColor(_renderer, 255, 0, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(_renderer);
 
-  SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+  SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
   SDL_RenderDrawLine(_renderer, 5, 5, _screenWidth-5, _screenHeight-5);
 }
