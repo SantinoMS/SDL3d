@@ -29,4 +29,5 @@ void DrawHandler::draw() {
 
   SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
   SDL_RenderDrawLine(_renderer, 5, 5, _screenWidth-5, _screenHeight-5);
+  SDL_RenderPresent(_renderer);
 }
