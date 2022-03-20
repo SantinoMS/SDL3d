@@ -9,9 +9,12 @@ GameWindow::GameWindow()
   _gameState    = GameState::STARTED;
 }
 
-GameWindow::~GameWindow()
-{
-
+GameWindow::~GameWindow() {
+  SDL_DestroyRenderer(_renderer);
+  SDL_DestroyWindow(_window);
+  _window = nullptr;
+  _renderer = nullptr;
+  SDL_Quit();
 }
 
 void GameWindow::run() {
@@ -29,9 +32,37 @@ void GameWindow::initSystems() {
   _drawHandler.init(_window, _renderer, _screenWidth, _screenHeight);
 }
 
+enum EventState {keyPressedA, keyPressedD};
+EventState eventState;
+
+void GameWindow::check() {
+  if (_eventHandler.w==1) {
+    _drawHandler.y-=10;
+  }
+  if (_eventHandler.a==1) {
+    _drawHandler.x-=10;
+  }
+  if (_eventHandler.s==1) {
+    _drawHandler.y+=10;
+  }
+  if (_eventHandler.d==1) {
+    _drawHandler.x+=10;
+  }
+  // if (_eventHandler.keyDown == 2) {
+  //   _drawHandler.color++;
+  // } else if (_eventHandler.keyDown == 1) {
+  //   _drawHandler.color--;
+  // } else if (_eventHandler.mouseMoved) {
+  _drawHandler.x2 = _eventHandler.x2;
+  _drawHandler.y2 = _eventHandler.y2;
+  //}
+};
+
 void GameWindow::gameLoop() {
   while (_gameState != GameState::EXIT) {
-    processInput();
+    processInput(_eventHandler);
+    check();
     _drawHandler.draw();
+    SDL_Delay(16);
   }
 }

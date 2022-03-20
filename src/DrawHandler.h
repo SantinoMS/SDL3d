@@ -16,6 +16,9 @@ public:
     int           screenHeight);
 
   void draw();
+  int color;
+  int color2;
+  int x, y, x2, y2;
 
 private:
   SDL_Window* _window;

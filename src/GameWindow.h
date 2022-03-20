@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include "DrawHandler.h"
+#include "Inputs.h"
+#include "TempEventHandler.h"
 
 enum class GameState {STARTED, EXIT};
 enum class GameState2 {SPLASH, MAINMENU, GAME};
@@ -14,16 +16,18 @@ public:
   ~GameWindow();
 
   void run();
+  void check();
 
 private:
   void initSystems();
   void gameLoop();
-  void processInput();
+  void processInput(Inputs &eventHandler);
 
   SDL_Window* _window;
   SDL_Renderer* _renderer;
   GameState _gameState;
 
+  TempEventHandler _eventHandler;
   DrawHandler _drawHandler;
 
   int _screenWidth;

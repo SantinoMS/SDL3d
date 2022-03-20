@@ -1,19 +1,24 @@
-#OBJS specifies which files to compile as part of the project
-OBJS = src/*.cpp
-
-#CC specifies which compiler we're using
 CC = g++
 
-#COMPILER_FLAGS specifies the additional compilation options we're using
-# -w suppresses all warnings
-COMPILER_FLAGS = #-w
+SRC = src/*.cpp
 
-#LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lSDL2
+OBJ = main.o
 
-#OBJ_NAME specifies the name of our executable
-OBJ_NAME = main.o
+CFLAGS = -Wall -std=c++17# None for now
 
-#This is the target that compiles our executable
-all : $(OBJS)
-	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+LFLAGS = -lSDL2
+
+all :
+	# Compiling Program...
+	$(CC) $(SRC) $(LFLAGS) $(CFLAGS) -o $(OBJ)
+	# Done.
+
+run :
+	# Running Program...
+	./$(OBJ)
+	# Done.
+
+clean :
+	# Cleaning Up...
+	rm -rf *.o
+	# Done.
