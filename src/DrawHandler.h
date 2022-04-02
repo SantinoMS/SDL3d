@@ -4,7 +4,8 @@
 #include <iostream>
 #include <string>
 
-class DrawHandler{
+class DrawHandler
+{
 public:
   DrawHandler(); // Constructor function
   ~DrawHandler(); // Destructor function

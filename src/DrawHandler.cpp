@@ -27,7 +27,6 @@ void DrawHandler::init(
 
 SDL_Rect rect;
 
-
 void DrawHandler::draw() {
   SDL_SetRenderDrawColor(_renderer, 255+color2, 0+color, 255, SDL_ALPHA_OPAQUE);
   SDL_RenderClear(_renderer);
