@@ -1,0 +1,6 @@
+*.o
+src/Client.h
+ignore/
+assets/
+*.swp
+*.swo
