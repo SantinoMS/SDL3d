@@ -5,6 +5,7 @@ GameWindow::GameWindow()
   _window       = nullptr;
   _renderer     = nullptr;
   _screenWidth  = 1024;
+	_fps					= 60;
   _screenHeight = 768;
   _gameState    = GameState::STARTED;
 }
@@ -31,9 +32,6 @@ void GameWindow::initSystems() {
 
   _drawHandler.init(_window, _renderer, _screenWidth, _screenHeight);
 }
-
-enum EventState {keyPressedA, keyPressedD};
-EventState eventState;
 
 void GameWindow::check() {
   if (_eventHandler.w==1) {

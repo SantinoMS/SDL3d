@@ -17,6 +17,8 @@ public:
     int           screenHeight);
 
   void draw();
+
+  //tempVars
   int color;
   int color2;
   int x, y, x2, y2;

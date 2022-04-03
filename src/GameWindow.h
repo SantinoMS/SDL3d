@@ -16,7 +16,7 @@ public:
   ~GameWindow();
 
   void run();
-  void check();
+  void check(); //temp func
 
 private:
   void initSystems();
@@ -28,10 +28,11 @@ private:
   GameState _gameState;
 
   TempEventHandler _eventHandler;
-  DrawHandler _drawHandler;
+  DrawHandler _drawHandler; //tempObject
 
   int _screenWidth;
   int _screenHeight;
+  int _fps;
 };
 
 #endif

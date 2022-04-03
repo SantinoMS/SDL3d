@@ -1,40 +1,47 @@
 CC = g++
 
-SRC = $(wildcard src/%.cpp)
+# SRC = $(wildcard src/%.cpp)
+SRC = $(shell find src -name "*.cpp")
 SRC_OLD = src/*.cpp
+OBJ = $(SRC:.cpp=.o)
+BIN = bin
 
-OBJ = main.o
-
-CFLAGS = -Wall -std=c++17
-
+CFLAGS = -Wall -std=c++17 
+FFLAGS = -fdiagnostics-color -fno-stack-protector
 LFLAGS = -lSDL2
 
-.PHONY : all old clean vClean
+FLAGS = $(CFLAGS)
+FLAGS += $(FFLAGS)
+FLAGS += $(LFLAGS)
 
-all : clean old run
+.PHONY : all old clean 
 
-# Doesn't actually work yet, use old until fixed
-%.o : src/%.cpp src/%.h
+all : dirs build
+
+dirs :
+	mkdir -p ./$(BIN)
+
+run : build
+	# Running Program...
+	$(BIN)/game
+	# Done.
+
+build : dirs $(OBJ)
+	$(CC) -o $(BIN)/game $(filter %.o,$^) $(FLAGS)
+
+%.o : %.cpp
 	# Compiling Program...
-	$(CC) $< $(LFLAGS) $(CFLAGS) -o $@
+	$(CC) -o $@ -c $< $(FLAGS)
 	# Done.
 
 old :
-	$(CC) $(SRC_OLD) $(LFLAGS) $(CFLAGS) -o $(OBJ)
-
-run :
-	# Running Program...
-	./$(OBJ)
-	# Done.
-
-vClean :
-	# Cleaning Up...
-	rm -rf *.swp
-	rm -rf src/.swp
-	# Done.
+	$(CC) $(SRC_OLD) $(FLAGS) -o $(OBJ)
 
 clean :
 	# Cleaning Up...
 	rm -rf *.o
+	rm -rf $(BIN) $(OBJ)
 	# Done.
+
+# credits: https://github.com/jdah/minecraft-again/blob/master/Makefile
 

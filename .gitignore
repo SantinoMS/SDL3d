@@ -1,5 +1,6 @@
+.gitignore
 *.o
-src/Client.h
+bin/
 ignore/
 assets/
 *.swp
