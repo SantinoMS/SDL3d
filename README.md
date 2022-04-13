@@ -4,7 +4,8 @@
 ## Prerequisites:
 - SDL2
 - g++
+- make
 
-# TODO:
+## TODO:
 - Better input handling
 - 3d projection
